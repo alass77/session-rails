@@ -15,17 +15,19 @@
     <% end %>
     <% if logged_in? %>
     <ul>
-    <li><%= link_to "Task column", tasks_path%></li>
-    <li><%= link_to "Register a task", new_task_path %></li>
-    <li><%= link_to "Account", user_path(current_user.id) %></li>
-    <li><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
+    <li><%= link_to "Task column", tasks_path, id: "tasks-index"%></li>
+    <li><%= link_to "Register a task", new_task_path, id: "new-task" %></li>
+    <li><%= link_to "Account", user_path(current_user.id), id: "my-account" %></li>
+    <li><%= link_to "Logout", session_path(current_user.id), method: :delete, id: "sign-out" %></li>
     </ul>
     <% else %>
     <ul>
-    <li><%= link_to "Account registration", new_user_path %></li>
-    <li><%= link_to "Login", new_session_path %></li>
+    <li><%= link_to "Account registration", new_user_path, id: "sign-up" %></li>
+    <li><%= link_to "Login", new_session_path, id: "sign-in" %></li>
     </ul>
     <% end %>
+    <p id="notice"><%= notice%></p>
+    <p id="alert"><%= alert%></p>
     <%= yield %>
   </body>
 </html>
